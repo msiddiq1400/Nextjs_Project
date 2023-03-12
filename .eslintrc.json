@@ -1,3 +1,98 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb-typescript",
+    "plugin:chai-friendly/recommended"
+  ],
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint", "chai-friendly"],
+  "globals": {
+    "React": "writable"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx", "tests/customRender.tsx"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "lodash",
+            "message": "Import [functionName] from lodash/[functionName] instead"
+          }
+        ]
+      }
+    ],
+    "@typescript-eslint/type-annotation-spacing": "error",
+    "no-console": "off",
+    "@typescript-eslint/semi": ["error", "never"],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none"
+        },
+        "singleline": {
+          "delimiter": "comma"
+        }
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2,
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-target-blank": [
+      1,
+      {
+        "allowReferrer": true
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/no-unused-prop-types": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "setupTests.ts",
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "tests/customRender.tsx"
+        ]
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ]
+  }
 }
